@@ -15,7 +15,9 @@ class ShoeDetailPage extends StatelessWidget {
             pinned: true,
             floating: false,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.network(shoe.image),
+              background: Hero(
+                tag: shoe.id,
+                child: Image.network(shoe.image)),
             ),
           )
         ],

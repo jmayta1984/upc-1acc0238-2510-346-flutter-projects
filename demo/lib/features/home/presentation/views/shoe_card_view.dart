@@ -14,24 +14,22 @@ class ShoeCardView extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Expanded(child: Image.network(shoe.image)),
-            
+                Expanded(
+                  child: Hero(tag: shoe.id, child: Image.network(shoe.image)),
+                ),
+
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
                       shoe.name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                       maxLines: 1,
                     ),
                     Text(shoe.brand, style: TextStyle(color: Colors.grey)),
                     Text(
                       '\$ ${shoe.price}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

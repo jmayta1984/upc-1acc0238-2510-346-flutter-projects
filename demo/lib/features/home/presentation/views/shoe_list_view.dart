@@ -1,4 +1,5 @@
 import 'package:demo/features/home/domain/entities/shoe.dart';
+import 'package:demo/features/home/presentation/pages/shoe_detail_page.dart';
 import 'package:demo/features/home/presentation/views/shoe_card_view.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +14,15 @@ class ShoeListView extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
-      itemBuilder:(context, index) {
+      itemBuilder: (context, index) {
         final Shoe shoe = shoes[index];
-        return ShoeCardView(shoe: shoe);
+        return GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ShoeDetailPage(shoe: shoe)),
+          ),
+          child: ShoeCardView(shoe: shoe),
+        );
       },
     );
   }
