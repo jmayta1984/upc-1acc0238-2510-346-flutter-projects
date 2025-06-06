@@ -1,6 +1,6 @@
 import 'package:demo/features/home/domain/entities/shoe.dart';
 import 'package:demo/features/home/presentation/pages/shoe_detail_page.dart';
-import 'package:demo/features/home/presentation/views/shoe_card_view.dart';
+import 'package:demo/features/home/presentation/widgets/shoe_card_view.dart';
 import 'package:flutter/material.dart';
 
 class ShoeListView extends StatelessWidget {
