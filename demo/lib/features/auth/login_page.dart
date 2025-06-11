@@ -1,6 +1,8 @@
 import 'package:demo/core/theme/color_palette.dart';
 import 'package:demo/features/app/main_page.dart';
+import 'package:demo/features/home/presentation/blocs/shoe_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -79,7 +81,9 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => MainPage()),
+                    MaterialPageRoute(builder: (context) => BlocProvider(
+                      create: (context) => ShoeBloc(),
+                      child: MainPage())),
                   );
                 },
                 child: Text("Sign in"),
