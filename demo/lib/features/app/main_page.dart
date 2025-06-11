@@ -1,4 +1,5 @@
 import 'package:demo/core/theme/color_palette.dart';
+import 'package:demo/features/favorites/presentation/pages/favorites_page.dart';
 import 'package:demo/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     HomePage(),
-    Text("Favorites"),
+    FavoritesPage(),
     Text("Cart"),
     Text("Profile")
   ];
