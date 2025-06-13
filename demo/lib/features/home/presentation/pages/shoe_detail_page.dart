@@ -1,7 +1,11 @@
 import 'package:demo/core/theme/color_palette.dart';
+import 'package:demo/features/favorites/domain/entities/favorite_shoe.dart';
+import 'package:demo/features/favorites/presentation/blocs/favorite_bloc.dart';
+import 'package:demo/features/favorites/presentation/blocs/favorite_event.dart';
 import 'package:demo/features/home/domain/entities/shoe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ShoeDetailPage extends StatefulWidget {
   const ShoeDetailPage({super.key, required this.shoe});
@@ -15,7 +19,9 @@ class _ShoeDetailPageState extends State<ShoeDetailPage> {
   int _selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
-    final List<ShoeSize> _sizes = widget.shoe.sizes;
+    final Shoe shoe = widget.shoe;
+    final List<ShoeSize> sizes = shoe.sizes;
+
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: SizedBox(
@@ -47,7 +53,18 @@ class _ShoeDetailPageState extends State<ShoeDetailPage> {
                     top: 60,
                     right: 0,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<FavoriteBloc>().add(
+                          AddFavoriteEvent(
+                            favoriteShoe: FavoriteShoe(
+                              id: shoe.id,
+                              name: shoe.name,
+                              image: shoe.image,
+                              price: shoe.price,
+                            ),
+                          ),
+                        );
+                      },
                       icon: Icon(Icons.favorite_border),
                     ),
                   ),
@@ -82,10 +99,10 @@ class _ShoeDetailPageState extends State<ShoeDetailPage> {
               height: 40,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemCount: _sizes.length,
+                itemCount: sizes.length,
                 itemBuilder: (context, index) {
                   bool isSelected = _selectedIndex == index;
-                  final ShoeSize size = _sizes[index];
+                  final ShoeSize size = sizes[index];
                   return GestureDetector(
                     onTap: () => setState(() {
                       _selectedIndex = index;
@@ -120,7 +137,7 @@ class _ShoeDetailPageState extends State<ShoeDetailPage> {
                     width: 40,
                     height: 40,
                     child: Center(
-                      child: Text(_sizes[_selectedIndex].stock.toString()),
+                      child: Text(sizes[_selectedIndex].stock.toString()),
                     ),
                   ),
                   Spacer(),
