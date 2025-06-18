@@ -24,9 +24,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
     return Scaffold(
       body: BlocBuilder<FavoriteBloc, FavoriteState>(
         builder: (context, state) {
-          if (state is LoadedFavoriteState) {
+          if (state.favorites.isEmpty) {
+            return Center(child: Text('No favorites'));
+          } else {
             return FavoriteShoeListView(favorites: state.favorites);
-          } return Center(child: Text('No favorites'),);
+          }
         },
       ),
     );

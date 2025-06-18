@@ -18,4 +18,10 @@ class FavoriteShoeDao {
     final maps = await db.query('favorites');
     return maps.map((e) => FavoriteShoeDto.fromMap(e)).toList();
   }
+
+  Future<bool> checkFavorite(int id) async {
+    Database db = await AppDatabase().database;
+    final maps = await db.query('favorites', where: 'id = ?', whereArgs: [id]);
+    return maps.isNotEmpty;
+  }
 }

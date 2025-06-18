@@ -1,5 +1,8 @@
 import 'package:demo/features/home/domain/entities/shoe.dart';
+import 'package:demo/features/home/presentation/blocs/shoe_bloc.dart';
+import 'package:demo/features/home/presentation/blocs/shoe_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ShoeCardView extends StatelessWidget {
   const ShoeCardView({super.key, required this.shoe});
@@ -39,8 +42,14 @@ class ShoeCardView extends StatelessWidget {
           Container(
             alignment: Alignment.topRight,
             child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.favorite_border),
+              onPressed: () {
+                context.read<ShoeBloc>().add(
+                  ToggleShoeEvent(shoe: shoe),
+                );
+              },
+              icon: Icon(
+                shoe.isFavorite ? Icons.favorite : Icons.favorite_border,
+              ),
             ),
           ),
         ],

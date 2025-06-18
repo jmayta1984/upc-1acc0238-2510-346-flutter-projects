@@ -17,4 +17,8 @@ class FavoriteShoeRepository {
     final dtos = await _dao.fetchAll();
     return dtos.map((e) => e.toDomain()).toList();
   }
+
+  Future<bool> checkFavorite(int id) async {
+    return await _dao.checkFavorite(id);
+  }
 }

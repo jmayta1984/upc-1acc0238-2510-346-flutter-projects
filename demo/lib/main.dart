@@ -18,8 +18,7 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthBloc>(create: (context) => AuthBloc()),
         BlocProvider<FavoriteBloc>(create: (context) => FavoriteBloc()),
-                BlocProvider<ShoeBloc>(create: (context) => ShoeBloc()),
-
+        BlocProvider<ShoeBloc>(create: (context) => ShoeBloc()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

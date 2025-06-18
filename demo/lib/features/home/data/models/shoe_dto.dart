@@ -31,7 +31,7 @@ class ShoeDto {
       image: json['image'],
       price: json['price'],
       description: json['description'],
-      rating: json['rating']?.toDouble() ?? 0.0, 
+      rating: json['rating']?.toDouble() ?? 0.0,
       category: json['category'],
       sizes: (json['sizes_available'] as List)
           .map((size) => ShoeSizeDto.fromJson(size as Map<String, dynamic>))
@@ -39,7 +39,7 @@ class ShoeDto {
     );
   }
 
-  Shoe toDomain() {
+  Shoe toDomain({bool isFavorite = false}) {
     return Shoe(
       id: id,
       name: name,
@@ -49,7 +49,8 @@ class ShoeDto {
       description: description,
       rating: rating,
       sizes: sizes.map((size) => size.toDomain()).toList(),
-      category: category
+      category: category,
+      isFavorite: isFavorite,
     );
   }
 }
@@ -58,20 +59,16 @@ class ShoeSizeDto {
   final double size;
   final int stock;
 
-  const ShoeSizeDto({
-    required this.size,
-    required this.stock,
-  });
+  const ShoeSizeDto({required this.size, required this.stock});
 
   factory ShoeSizeDto.fromJson(Map<String, dynamic> json) {
     return ShoeSizeDto(
       size: json['size']?.toDouble() ?? 0.0,
-      stock: json['quantity']
+      stock: json['quantity'],
     );
   }
 
   ShoeSize toDomain() {
     return ShoeSize(size: size.toString(), stock: stock);
   }
-  
 }
