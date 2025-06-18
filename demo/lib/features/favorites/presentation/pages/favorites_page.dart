@@ -1,4 +1,3 @@
-import 'package:demo/features/favorites/domain/entities/favorite_shoe.dart';
 import 'package:demo/features/favorites/presentation/blocs/favorite_bloc.dart';
 import 'package:demo/features/favorites/presentation/blocs/favorite_event.dart';
 import 'package:demo/features/favorites/presentation/blocs/favorite_state.dart';

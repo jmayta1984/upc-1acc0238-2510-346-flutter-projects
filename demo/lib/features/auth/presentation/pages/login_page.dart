@@ -3,7 +3,6 @@ import 'package:demo/features/app/main_page.dart';
 import 'package:demo/features/auth/presentation/blocs/auth_bloc.dart';
 import 'package:demo/features/auth/presentation/blocs/auth_event.dart';
 import 'package:demo/features/auth/presentation/blocs/auth_state.dart';
-import 'package:demo/features/home/presentation/blocs/shoe_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,10 +26,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => BlocProvider(
-                create: (context) => ShoeBloc(),
-                child: MainPage(),
-              ),
+              builder: (context) => MainPage(),
             ),
           );
         } else if (state is FailureAuthState) {

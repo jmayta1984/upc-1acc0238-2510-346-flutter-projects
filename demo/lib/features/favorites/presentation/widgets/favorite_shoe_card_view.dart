@@ -23,30 +23,33 @@ class FavoriteShoeCardView extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  shoe.name,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    shoe.name,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis
+                    ),
+                    maxLines: 1,
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text('\$${shoe.price.toStringAsFixed(2)}'),
-                const SizedBox(height: 5),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    side: const BorderSide(color: Colors.black, width: 1),
+                  const SizedBox(height: 5),
+                  Text('\$${shoe.price.toStringAsFixed(2)}'),
+                  const SizedBox(height: 5),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      side: const BorderSide(color: Colors.black, width: 1),
+                    ),
+                    onPressed: () {},
+                    child: Text('Add to cart'),
                   ),
-                  onPressed: () {},
-                  child: Text('Add to cart'),
-                ),
-              ],
+                ],
+              ),
             ),
-            const Spacer(),
             IconButton(
               icon: const Icon(Icons.more_vert),
               onPressed: () {

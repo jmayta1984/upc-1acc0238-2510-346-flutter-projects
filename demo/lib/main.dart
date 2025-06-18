@@ -1,6 +1,7 @@
 import 'package:demo/features/auth/presentation/blocs/auth_bloc.dart';
 import 'package:demo/features/auth/presentation/pages/login_page.dart';
 import 'package:demo/features/favorites/presentation/blocs/favorite_bloc.dart';
+import 'package:demo/features/home/presentation/blocs/shoe_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,8 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthBloc>(create: (context) => AuthBloc()),
         BlocProvider<FavoriteBloc>(create: (context) => FavoriteBloc()),
+                BlocProvider<ShoeBloc>(create: (context) => ShoeBloc()),
+
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
