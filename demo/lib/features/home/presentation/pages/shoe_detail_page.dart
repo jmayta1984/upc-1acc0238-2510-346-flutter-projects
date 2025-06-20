@@ -1,4 +1,5 @@
 import 'package:demo/core/theme/color_palette.dart';
+import 'package:demo/features/cart/data/cart_item_service.dart';
 import 'package:demo/features/home/domain/entities/shoe.dart';
 import 'package:demo/features/home/presentation/blocs/shoe_bloc.dart';
 import 'package:demo/features/home/presentation/blocs/shoe_event.dart';
@@ -31,7 +32,11 @@ class _ShoeDetailPageState extends State<ShoeDetailPage> {
             style: FilledButton.styleFrom(
               backgroundColor: ColorPalette.primaryColor,
             ),
-            onPressed: () {},
+            onPressed: (_selectedIndex >= 0)
+                ? () {
+                    CartItemService().addCartItem(shoe.id, 'emilys');
+                  }
+                : null,
             child: Text("Add to cart"),
           ),
         ),

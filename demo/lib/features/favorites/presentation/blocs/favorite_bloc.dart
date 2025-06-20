@@ -7,7 +7,7 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   final FavoriteShoeRepository _repository = FavoriteShoeRepository();
 
 
-  FavoriteBloc(super.initialState){
+  FavoriteBloc(): super(FavoriteState(favorites: [])){
     on<AddFavoriteEvent>((event, emit) async {
       await _repository.insertFavorite(event.favoriteShoe);
       final favorites = await _repository.fetchAll();
