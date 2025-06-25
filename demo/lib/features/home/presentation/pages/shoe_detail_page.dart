@@ -1,4 +1,6 @@
 import 'package:demo/core/theme/color_palette.dart';
+import 'package:demo/features/auth/presentation/blocs/auth_bloc.dart';
+import 'package:demo/features/auth/presentation/blocs/auth_state.dart';
 import 'package:demo/features/cart/data/cart_item_service.dart';
 import 'package:demo/features/home/domain/entities/shoe.dart';
 import 'package:demo/features/home/presentation/blocs/shoe_bloc.dart';
@@ -34,7 +36,11 @@ class _ShoeDetailPageState extends State<ShoeDetailPage> {
             ),
             onPressed: (_selectedIndex >= 0)
                 ? () {
-                    CartItemService().addCartItem(shoe.id, 'emilys');
+                    final username =
+                        (context.read<AuthBloc>().state as SuccessAuthState)
+                            .user
+                            .username;
+                    CartItemService().addCartItem(shoe.id, username);
                   }
                 : null,
             child: Text("Add to cart"),
