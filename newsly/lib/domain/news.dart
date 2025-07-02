@@ -4,6 +4,7 @@ class News {
   final String image;
   final String year;
   final String content;
+  final String description;
 
   const News({
     required this.author,
@@ -11,5 +12,6 @@ class News {
     required this.image,
     required this.year,
     required this.content,
+    required this.description,
   });
 }

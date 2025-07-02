@@ -53,6 +53,7 @@ class NewsDto {
       image: urlToImage,
       year: publishedAt.isNotEmpty ? publishedAt.split('-')[0] : '',
       content: content,
+      description: description,
     );
   }
 }

@@ -14,18 +14,21 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
   List<News> _newsList = [];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          decoration: InputDecoration(
-            hintText: 'Search news',
-            border: OutlineInputBorder(),
-            prefixIcon: Icon(Icons.search),
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Search news',
+              border: OutlineInputBorder(),
+              prefixIcon: Icon(Icons.search),
+            ),
+            onSubmitted: _searchNews,
           ),
-          onSubmitted: _searchNews,
-        ),
-        Expanded(child: NewsListView(newsList: _newsList)),
-      ],
+          Expanded(child: NewsListView(newsList: _newsList)),
+        ],
+      ),
     );
   }
 
@@ -76,13 +79,16 @@ class NewsListItemView extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(
-              news.image,
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) =>
-                  Icon(Icons.error, size: 100),
+            child: Hero(
+              tag: news.title,
+              child: Image.network(
+                news.image,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    Icon(Icons.error, size: 100),
+              ),
             ),
           ),
           Expanded(

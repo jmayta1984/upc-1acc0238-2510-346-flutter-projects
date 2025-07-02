@@ -38,4 +38,13 @@ class FavoriteNewsDto {
       description: description,
     );
   }
+  
+  factory FavoriteNewsDto.fromDomain(FavoriteNews news) {
+    return FavoriteNewsDto(
+      title: news.title,
+      author: news.author,
+      image: news.image,
+      description: news.description,
+    );
+  }
 }
